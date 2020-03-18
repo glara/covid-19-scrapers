@@ -2,7 +2,6 @@
 
 require 'countries/global'
 require 'mechanize'
-require 'byebug'
 
 module Scrappers
   # worldmeters coronavirus scrapper
