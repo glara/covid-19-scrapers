@@ -3,12 +3,12 @@
 require 'csv'
 require 'json'
 require 'sinatra'
-require './worldmeters'
+require './worldometers'
 
 # main class
 class Main < Sinatra::Base
-  get '/worldmeters/csv' do
-    scrapper = Scrappers::Worldmeters.new
+  get '/worldometers/csv' do
+    scrapper = Scrappers::Worldometers.new
     summary = scrapper.summary
 
     body << "#{summary.first.keys.join(';')}\n"
@@ -17,8 +17,8 @@ class Main < Sinatra::Base
     body
   end
 
-  get '/worldmeters/json' do
-    scrapper = Scrappers::Worldmeters.new
+  get '/worldometers/json' do
+    scrapper = Scrappers::Worldometers.new
     summary = scrapper.summary
 
     summary.to_json

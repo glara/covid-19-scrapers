@@ -4,8 +4,8 @@ require 'countries/global'
 require 'mechanize'
 
 module Scrappers
-  # worldmeters coronavirus scrapper
-  class Worldmeters
+  # worldometers coronavirus scrapper
+  class Worldometers
     TABLE_URL = 'https://www.worldometers.info/coronavirus/'
     TABLE_NAME = 'main_table_countries_today'
     HEADERS = %i[country total_cases new_cases total_deaths new_deaths
