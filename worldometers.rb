@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'countries/global'
 require 'mechanize'
+require './helpers/countries'
 
 module Scrappers
   # worldometers coronavirus scrapper
@@ -38,15 +38,11 @@ module Scrappers
         [HEADERS[index], item.text.strip]
       end).to_h
 
-      country = country_by_name record[:country]
+      country = ::Helpers::Countries.find_by_name record[:country]
       record[:latitude] = country&.latitude
       record[:longitude] = country&.longitude
 
       record
-    end
-
-    def country_by_name(country_name)
-      ::ISO3166::Country.find_country_by_name country_name
     end
   end
 end
