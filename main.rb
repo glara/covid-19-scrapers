@@ -3,7 +3,8 @@
 require 'csv'
 require 'json'
 require 'sinatra'
-require './worldometers'
+require './scrappers/worldometers'
+require './scrappers/bcg_atlas'
 
 # main class
 class Main < Sinatra::Base
@@ -22,5 +23,22 @@ class Main < Sinatra::Base
     summary = scrapper.summary
 
     summary.to_json
+  end
+
+  get '/bcg_atlas/csv' do
+    scrapper = Scrappers::BcgAtlas.new
+    countries = scrapper.countries
+
+    body << "#{countries.first.keys.join(';')}\n"
+    countries.each { |row| body << "#{row.values.join(';')}\n" }
+
+    body
+  end
+
+  get '/bcg_atlas/json' do
+    scrapper = Scrappers::BcgAtlas.new
+    countries = scrapper.countries
+
+    countries.to_json
   end
 end
