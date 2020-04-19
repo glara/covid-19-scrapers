@@ -13,6 +13,7 @@ module Scrappers
     CURRENT_SITUATION_TEXT = 'Current BCG vaccination?'
     ENDS_AT_TEXT = 'Year BCG stopped?'
     COVERAGE_TEXT = 'BCG coverage (%)'
+    INCOME_GROUP_TEXT = 'Income group (World Bank)'
 
     def initialize
       raw_data = RestClient.get DATA_URL
@@ -29,7 +30,8 @@ module Scrappers
           name: name,
           current_situation: parse(info, CURRENT_SITUATION_TEXT, :bool),
           ends_at: parse(info, ENDS_AT_TEXT),
-          coverage: parse(info, COVERAGE_TEXT, :float)
+          coverage: parse(info, COVERAGE_TEXT, :float),
+          income_group: parse(info, INCOME_GROUP_TEXT)
         }
       end
     end
