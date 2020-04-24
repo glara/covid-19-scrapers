@@ -11,7 +11,8 @@ module Scrappers
     TABLE_NAME = 'main_table_countries_today'
     HEADERS = %i[country total_cases new_cases total_deaths new_deaths
                  total_recovered active_cases serious_critical
-                 total_cases_by_1mpop total_deaths_by_1mpop].freeze
+                 total_cases_by_1mpop total_deaths_by_1mpop
+                 total_tests tests_by_1mpop].freeze
 
     attr_reader :agent
 
