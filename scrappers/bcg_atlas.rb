@@ -26,6 +26,7 @@ module Scrappers
       @parsed_data.map do |segment|
         name = segment['name'].strip
         info = Nokogiri::HTML.parse(segment['info'])
+        geopoint = resolve_geopoint name
 
         {
           name: name,
@@ -33,12 +34,19 @@ module Scrappers
           ends_at: parse(info, ENDS_AT_TEXT),
           coverage: parse(info, COVERAGE_TEXT, :float),
           income_group: parse(info, INCOME_GROUP_TEXT),
-          starts_at: parse(info, STARTS_AT_TEXT)
+          starts_at: parse(info, STARTS_AT_TEXT),
+          latitude: geopoint ? geopoint.latitude : nil,
+          longitude: geopoint ? geopoint.longitude : nil
         }
       end
     end
 
     private
+
+    # :reek:UtilityFunction
+    def resolve_geopoint(country_name)
+      ::Helpers::Countries.find_by_name country_name
+    end
 
     def parse(html, key, type = :string)
       response = html.at("tr:contains('#{key}')/td[3]")
