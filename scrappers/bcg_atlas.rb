@@ -30,6 +30,7 @@ module Scrappers
 
         {
           id: segment['id'],
+          group_id: segment['groupID'],
           name: name,
           current_situation: parse(info, CURRENT_SITUATION_TEXT, :bool),
           ends_at: parse(info, ENDS_AT_TEXT),
