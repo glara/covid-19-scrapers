@@ -29,6 +29,7 @@ module Scrappers
         geopoint = resolve_geopoint name
 
         {
+          id: segment['id'],
           name: name,
           current_situation: parse(info, CURRENT_SITUATION_TEXT, :bool),
           ends_at: parse(info, ENDS_AT_TEXT),
