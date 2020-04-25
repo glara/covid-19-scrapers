@@ -36,7 +36,9 @@ module Scrappers
           income_group: parse(info, INCOME_GROUP_TEXT),
           starts_at: parse(info, STARTS_AT_TEXT),
           latitude: geopoint ? geopoint.latitude : nil,
-          longitude: geopoint ? geopoint.longitude : nil
+          longitude: geopoint ? geopoint.longitude : nil,
+          country_code_alpha_2: geopoint ? geopoint.alpha2 : nil,
+          country_code_alpha_3: geopoint ? geopoint.alpha3 : nil
         }
       end
     end

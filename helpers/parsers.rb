@@ -20,7 +20,9 @@ module Helpers
     end
 
     def self.parse_type_float(value)
-      value.to_f
+      return unless value
+
+      value.match(/\d+/).to_s.to_f
     end
   end
 end
