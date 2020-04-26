@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'mechanize'
-require './scrappers/base'
+require './scrapers/base'
 require './helpers/countries'
 
-module Scrappers
-  # worldometers coronavirus scrapper
+module Scrapers
+  # worldometers coronavirus scraper
   class Worldometers < Base
     TABLE_URL = 'https://www.worldometers.info/coronavirus/'
     TABLE_NAME = 'main_table_countries_today'

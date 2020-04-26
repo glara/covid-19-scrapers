@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Scrappers
-  # scrappers base class
+module Scrapers
+  # scrapers base class
   class Base
   end
 end

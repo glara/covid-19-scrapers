@@ -4,10 +4,11 @@ require 'rest-client'
 require 'json'
 require 'nokogiri'
 
+require './scrapers/base'
 require './helpers/parsers'
 
-module Scrappers
-  # scrapper to bcg atlas
+module Scrapers
+  # scraper to bcg atlas
   class BcgAtlas < Base
     DATA_URL = 'http://www.bcgatlas.org/data.php'
     CURRENT_SITUATION_TEXT = 'Current BCG vaccination?'
